@@ -40,12 +40,12 @@ class User < ApplicationRecord
   end
 
   def activate
-    update_columns(activated: FILL_IN, activated_at: FILL_IN)
+     update_columns(activated: true, activated_at: Time.zone.now)
   end
 
  # Sends activation email.
  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+   UserMailer.account_activation(self).deliver_now
  end
 
 
